@@ -1,0 +1,26 @@
+﻿生成启动时间为 2017/9/30 20:38:28。
+     1>项目“D:\各科课件\算法设计与分析\算法\算法实验二\算法实验二\算法实验二.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt htl_code.cpp
+         htl_code.cpp
+     1>htl_code.cpp(55): warning C4018: “<”: 有符号/无符号不匹配
+     1>htl_code.cpp(56): warning C4018: “<”: 有符号/无符号不匹配
+     1>htl_code.cpp(53): warning C4101: “y”: 未引用的局部变量
+     1>htl_code.cpp(53): warning C4101: “x”: 未引用的局部变量
+     1>htl_code.cpp(91): warning C4018: “<”: 有符号/无符号不匹配
+     1>htl_code.cpp(106): warning C4018: “<”: 有符号/无符号不匹配
+     1>htl_code.cpp(113): warning C4018: “<”: 有符号/无符号不匹配
+     1>htl_code.cpp(127): warning C4018: “<”: 有符号/无符号不匹配
+     1>htl_code.cpp(70): warning C4101: “middle”: 未引用的局部变量
+     1>htl_code.cpp(160): warning C4018: “<”: 有符号/无符号不匹配
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\各科课件\算法设计与分析\算法\算法实验二\Release\算法实验二.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\各科课件\算法设计与分析\算法\算法实验二\Release\算法实验二.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\各科课件\算法设计与分析\算法\算法实验二\Release\算法实验二.lib" /MACHINE:X86 /SAFESEH Release\htl_code.obj
+         "Release\蛮力法_最小点对.obj"
+         正在生成代码
+         已完成代码的生成
+         算法实验二.vcxproj -> D:\各科课件\算法设计与分析\算法\算法实验二\Release\算法实验二.exe
+     1>已完成生成项目“D:\各科课件\算法设计与分析\算法\算法实验二\算法实验二\算法实验二.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.42

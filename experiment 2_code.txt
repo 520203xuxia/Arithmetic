@@ -1,0 +1,188 @@
+// 2017.cpp : 定义控制台应用程序的入口点。
+//
+#include "stdafx.h"
+
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<stack>
+#include<queue>
+#include<string>
+#include<stdio.h>
+#include<memory.h>
+#include<string.h>
+#include<time.h>
+using namespace std;
+
+class point
+{
+public:
+	double x;
+	double y;
+	bool left;
+};
+
+point result1To, result1From, result2To, result2From;
+double Mindist=9999;
+vector<point> nice;
+vector<point> nice2;
+int n;
+
+bool cmp(point a, point b) {
+	if (a.x != b.x) return a.x < b.x;
+	else return a.y < b.y;
+}
+
+bool cmp2(point a, point b) {
+	return a.y >= b.y;
+}
+
+//求两点之间的距离
+double getDis(point a, point b) {
+	double one = pow(a.x - b.x, 2);
+	double two = pow(a.y - b.y, 2);
+	return sqrt(one + two);
+}
+
+//穷举法
+double minPath1(vector<point> nice) {
+	int i, j;
+	double minDis = 9999;
+	double x, y;
+	if (nice.size() == 1) return -1;
+	for (i = 0; i < nice.size(); i++) {
+		for (j = i + 1; j < nice.size(); j++) {	
+				double d = getDis(nice[i], nice[j]); 
+				minDis = min(minDis, d);
+				if (minDis == d) {
+					result1From = nice[i]; 
+					result1To = nice[j];
+				}	
+		}
+	}
+	return minDis;
+}
+
+//分治法
+double minPath2(int left, int right, vector<point> niceY) {
+	int i, j, middle;
+	double minDist;
+	if (right == left) return 9999;
+	else if (left == right - 1) {
+		double d = getDis(nice[left], nice[right]);
+		if (d < Mindist) { Mindist = d; result2To = nice[left]; result2From = nice[right]; }
+		return d;
+	}
+	else if (left == right - 2) {
+		double d = getDis(nice[left], nice[left + 1]);
+		if (d < Mindist) { result2To = nice[left]; result2From = nice[left + 1]; Mindist = d; }
+		double dd = getDis(nice[left], nice[right]);
+		if (dd < Mindist) { result2To = nice[left]; result2From = nice[right]; Mindist = dd; }
+		double ddd = getDis(nice[left + 1], nice[right]);
+		if (ddd < Mindist) { result2To = nice[left + 1]; result2From = nice[right]; Mindist = ddd; }
+		return min(d, min(dd, ddd));
+	}
+	else {
+		int middle = (right + left) / 2;
+
+		vector<point> LeftY, RightY;
+		for (i = 0; i < niceY.size(); i++) {
+			if (niceY[i].x <= nice[middle].x) {
+				LeftY.push_back(niceY[i]);
+			}
+			else RightY.push_back(niceY[i]);
+		}
+		/*for_each(niceY.begin(), niceY.end(), [](int i) {
+			
+			
+		
+		});*/
+
+		minDist = min(minPath2(left, middle, LeftY), minPath2(middle + 1, right, RightY));//递归求中线两边最短距离
+
+		vector<point> in;
+		for (i = 0; i < niceY.size(); i++) {
+			if (fabs(niceY[i].x - nice[middle].x) <= minDist) {
+				in.push_back(niceY[i]);
+			}
+		}
+		//sort(in.begin(), in.end(), cmp2);
+
+		for (i = 0; i < in.size(); i++) {
+			if (in[i].x<=nice[middle].x) {
+				for (j = i - 1; j >= 0; j--) {
+					if (in[j].y - in[i].y > minDist) break;
+					if (in[j].x >= nice[middle].x) {
+						double d = getDis(in[i], in[j]);
+						minDist = min(minDist, d);
+						if (Mindist > minDist) {
+							result2To = in[i];
+							result2From = in[j];
+							Mindist = minDist;
+						}
+					}
+				}
+				for (j = i + 1; j < in.size(); j++) {
+					if (in[i].y - in[j].y > minDist) break;
+					if (in[j].x >= nice[middle].x) {
+						double d = getDis(in[i], in[j]);
+						minDist = min(minDist, d);
+						if (Mindist > minDist) {
+							result2To = in[i];
+							result2From = in[j];
+							Mindist = minDist;
+						}
+					}
+				}
+			}
+		}
+	}
+	return minDist;
+}
+
+int main()
+{
+	srand((unsigned)time(NULL));
+	int i, j;
+
+	cout << "清输入点的个数:";
+	cin >> n;
+
+	nice.clear();
+	nice2.clear();
+	for (i = 0; i < n; i++) {
+		point a;
+		a.x = rand() / (double)(RAND_MAX / 10000);
+		a.y = rand() / (double)(RAND_MAX / 10000);
+		for (j = 0; j < nice.size(); j++) {
+			if (nice[j].x == a.x&&nice[j].y == a.y)
+				break;
+		}
+		if (j == nice.size()) nice.push_back(a);
+		else i--;
+	}cout << "数据生成结束" << endl << endl;
+
+	nice2 = nice;
+	//对输入的点进行排序 先按x再按y
+	sort(nice.begin(), nice.end(), cmp);
+	sort(nice2.begin(), nice2.end(), cmp2);
+
+	clock_t timeBegin, timeEnd;
+
+	timeBegin = clock();
+	cout << "分治法结果为:" << minPath2(0, n - 1, nice2) << endl;
+	timeEnd = clock();
+	cout << n << "规模分治法所用时间:" << timeEnd - timeBegin << "ms" << endl;
+	cout << "分治法最近点对为:" << endl << result2To.x << " " << result2To.y << endl;
+	cout << result2From.x << " " << result2From.y << endl << endl;
+
+	timeBegin = clock();
+	cout << "穷举法结果为:" << minPath1(nice) << endl;
+	timeEnd = clock();
+	cout << n << "规模穷举法所用时间:" << timeEnd - timeBegin << "ms" << endl;
+	cout << "穷举法最近点对为:" << endl << result1To.x << " " << result1To.y << endl;
+	cout << result1From.x << " " << result1From.y << endl << endl;
+
+	return 0;
+}
