@@ -1,0 +1,23 @@
+﻿生成启动时间为 2017/10/27 10:16:24。
+     1>项目“D:\各科课件\算法设计与分析\算法\算法实验三\算法实验三\算法实验三.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "测试8皇后问题.cpp" "剪枝-递归与非递归.cpp" "蛮力法-递归与非递归.cpp" "递归-剪枝与不剪枝.cpp"
+         测试8皇后问题.cpp
+         剪枝-递归与非递归.cpp
+         蛮力法-递归与非递归.cpp
+         递归-剪枝与不剪枝.cpp
+     1>递归-剪枝与不剪枝.cpp(27): warning C4101: “k”: 未引用的局部变量
+     1>递归-剪枝与不剪枝.cpp(27): warning C4101: “j”: 未引用的局部变量
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\各科课件\算法设计与分析\算法\算法实验三\Release\算法实验三.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\各科课件\算法设计与分析\算法\算法实验三\Release\算法实验三.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\各科课件\算法设计与分析\算法\算法实验三\Release\算法实验三.lib" /MACHINE:X86 /SAFESEH "Release\测试8皇后问题.obj"
+         "Release\剪枝-递归与非递归.obj"
+         "Release\蛮力法-递归与非递归.obj"
+         "Release\递归-剪枝与不剪枝.obj"
+         正在生成代码
+         已完成代码的生成
+         算法实验三.vcxproj -> D:\各科课件\算法设计与分析\算法\算法实验三\Release\算法实验三.exe
+     1>已完成生成项目“D:\各科课件\算法设计与分析\算法\算法实验三\算法实验三\算法实验三.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.29
